@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "System.Reflection": "4.0.10",
     "System.Runtime": "4.0.0",
     "System.Xml.ReaderWriter": "4.0.10",
     "System.IO": "4.0.0"

@@ -104,12 +104,14 @@ namespace System.Xml.Serialization
 
     internal class ElementAccessor : Accessor
     {
+        private bool _isSoap;
         private bool _nullable;
         private bool _unbounded = false;
 
         internal bool IsSoap
         {
-            get { return false; }
+            get { return _isSoap; }
+            set { _isSoap = value; }
         }
 
         internal bool IsNullable
@@ -223,6 +225,8 @@ namespace System.Xml.Serialization
 
     internal abstract class Mapping
     {
+        private bool _isSoap;
+
         internal Mapping() { }
 
         protected Mapping(Mapping mapping)
@@ -231,7 +235,8 @@ namespace System.Xml.Serialization
 
         internal bool IsSoap
         {
-            get { return false; }
+            get { return _isSoap; }
+            set { _isSoap = value; }
         }
     }
 
@@ -926,6 +931,7 @@ namespace System.Xml.Serialization
     {
         private MemberMapping[] _members;
         private bool _hasWrapperElement = true;
+        private bool _validateRpcWrapperElement;
         private bool _writeAccessors = true;
         private MemberMapping _xmlnsMember = null;
 
@@ -947,10 +953,15 @@ namespace System.Xml.Serialization
             set { _hasWrapperElement = value; }
         }
 
+        internal bool ValidateRpcWrapperElement {
+            get { return _validateRpcWrapperElement; }
+            set { _validateRpcWrapperElement = value; }
+        }
 
         internal bool WriteAccessors
         {
             get { return _writeAccessors; }
+            set { _writeAccessors = value; }
         }
     }
 

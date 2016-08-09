@@ -17,6 +17,7 @@ namespace System.Xml.Serialization
         private string _memberName;
         private Type _type;
         private XmlAttributes _xmlAttributes = new XmlAttributes();
+        private SoapAttributes _soapAttributes = new SoapAttributes();
         private bool _isReturnValue;
         private bool _overrideIsNullable;
 
@@ -40,6 +41,14 @@ namespace System.Xml.Serialization
             set { _xmlAttributes = value; }
         }
 
+        /// <include file='doc\XmlReflectionMember.uex' path='docs/doc[@for="XmlReflectionMember.SoapAttributes"]/*' />
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        public SoapAttributes SoapAttributes {
+            get { return _soapAttributes; }
+            set { _soapAttributes = value; }
+        }
 
         /// <include file='doc\XmlReflectionMember.uex' path='docs/doc[@for="XmlReflectionMember.MemberName"]/*' />
         /// <devdoc>

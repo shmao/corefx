@@ -30,6 +30,7 @@ namespace System.Xml.Serialization
         private string _key;
         private bool _shallow = false;
         private XmlMappingAccess _access;
+        private bool _isSoap;
 
         internal XmlMapping(TypeScope scope, ElementAccessor accessor) : this(scope, accessor, XmlMappingAccess.Read | XmlMappingAccess.Write)
         {
@@ -107,7 +108,8 @@ namespace System.Xml.Serialization
 
         internal bool IsSoap
         {
-            get { return false; }
+            get { return _isSoap; }
+            set { _isSoap = value; }
         }
 
         /// <include file='doc\XmlMapping.uex' path='docs/doc[@for="XmlMapping.SetKey"]/*' />

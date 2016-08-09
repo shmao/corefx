@@ -50,6 +50,15 @@
     <Compile Include="System\Xml\Serialization\NameTable.cs" />
     <Compile Include="System\Xml\Serialization\Types.cs" />
     <Compile Include="System\Xml\Serialization\TypeCode.cs" />
+    <Compile Include="System\Xml\Serialization\SoapAttributeAttribute.cs" />
+    <Compile Include="System\Xml\Serialization\SoapAttributeOverrides.cs" />
+    <Compile Include="System\Xml\Serialization\SoapAttributes.cs" />
+    <Compile Include="System\Xml\Serialization\SoapElementAttribute.cs" />
+    <Compile Include="System\Xml\Serialization\SoapEnumAttribute.cs" />
+    <Compile Include="System\Xml\Serialization\SoapIgnoreAttribute.cs" />
+    <Compile Include="System\Xml\Serialization\SoapIncludeAttribute.cs" />
+    <Compile Include="System\Xml\Serialization\SoapReflectionImporter.cs" />
+    <Compile Include="System\Xml\Serialization\SoapTypeAttribute.cs" />
     <Compile Include="System\Xml\Serialization\XmlAnyAttributeAttribute.cs" />
     <Compile Include="System\Xml\Serialization\XmlAttributeAttribute.cs" />
     <Compile Include="System\Xml\Serialization\XmlAnyElementAttribute.cs" />

@@ -224,4 +224,172 @@ namespace System.Xml.Serialization
         public string Namespace { get { return default(string); } set { } }
         public string TypeName { get { return default(string); } set { } }
     }
+    public partial class XmlMemberMapping
+    {
+        internal XmlMemberMapping() { }
+        public bool Any { get { return default(bool); } }
+        public bool CheckSpecified { get { return default(bool); } }
+        public string ElementName { get { return default(string); } }
+        public string MemberName { get { return default(string); } }
+        public string Namespace { get { return default(string); } }
+        public string TypeFullName { get { return default(string); } }
+        public string TypeName { get { return default(string); } }
+        public string TypeNamespace { get { return default(string); } }
+        public string XsdElementName { get { return default(string); } }
+    }
+    public partial class XmlMembersMapping : XmlMapping
+    {
+        internal XmlMembersMapping() { }
+        public int Count { get { return default(int); } }
+        public XmlMemberMapping this[int index] { get { return default(XmlMemberMapping); } }
+        public string TypeName { get { return default(string); } }
+        public string TypeNamespace { get { return default(string); } }
+    }
+    public abstract partial class XmlMapping
+    {
+        internal XmlMapping() { }
+        public string ElementName { get { return default(string); } }
+        public string Namespace { get { return default(string); } }
+        public string XsdElementName { get { return default(string); } }
+        public void SetKey(string key) { }
+    }
+    public partial class XmlReflectionImporter
+    {
+        public XmlReflectionImporter() { }
+        public XmlReflectionImporter(string defaultNamespace) { }
+        public XmlReflectionImporter(XmlAttributeOverrides attributeOverrides) { }
+        public XmlReflectionImporter(XmlAttributeOverrides attributeOverrides, string defaultNamespace) { }
+        public XmlTypeMapping ImportTypeMapping(Type type) { return default(XmlTypeMapping); }
+        public XmlTypeMapping ImportTypeMapping(Type type, string defaultNamespace) { return default(XmlTypeMapping); }
+        public XmlTypeMapping ImportTypeMapping(Type type, XmlRootAttribute root) { return default(XmlTypeMapping); }
+        public XmlTypeMapping ImportTypeMapping(Type type, XmlRootAttribute root, string defaultNamespace) { return default(XmlTypeMapping); }
+        public void IncludeTypes(System.Reflection.MemberInfo memberInfo) { }
+        public void IncludeType(Type type) { }
+        public XmlMembersMapping ImportMembersMapping(string elementName, string ns, XmlReflectionMember[] members, bool hasWrapperElement) { return default(XmlMembersMapping); }
+        public XmlMembersMapping ImportMembersMapping(string elementName, string ns, XmlReflectionMember[] members, bool hasWrapperElement, bool rpc) { return default(XmlMembersMapping); }
+        public XmlMembersMapping ImportMembersMapping(string elementName, string ns, XmlReflectionMember[] members, bool hasWrapperElement, bool rpc, bool openModel) { return default(XmlMembersMapping); }
+        public XmlMembersMapping ImportMembersMapping(string elementName, string ns, XmlReflectionMember[] members, bool hasWrapperElement, bool rpc, bool openModel, XmlMappingAccess access) { return default(XmlMembersMapping); }
+    }
+    [Flags]
+    public enum XmlMappingAccess
+    {
+        None = 0x00,
+        Read = 0x01,
+        Write = 0x02,
+    }
+    public partial class XmlReflectionMember
+    {
+        public XmlReflectionMember() { }
+        public bool IsReturnValue { get { return default(bool); } set { } }
+        public string MemberName { get { return default(string); } set { } }
+        public Type MemberType { get { return default(Type); } set { } }
+        public bool OverrideIsNullable { get { return default(bool); } set { } }
+        public SoapAttributes SoapAttributes { get { return default(SoapAttributes); } set { } }
+        public XmlAttributes XmlAttributes { get { return default(XmlAttributes); } set { } }
+    }
+    public partial class XmlTypeMapping : XmlMapping
+    {
+        internal XmlTypeMapping() { }
+        public string TypeName { get { return default(string); } }
+        public string TypeFullName { get { return default(string); } }
+        public string XsdTypeName { get { return default(string); } }
+        public string XsdTypeNamespace { get { return default(string); } }
+    }
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.ReturnValue)]
+    public partial class SoapAttributeAttribute : System.Attribute
+    {
+        public SoapAttributeAttribute() { }
+        public SoapAttributeAttribute(string attributeName) { }
+        public string AttributeName { get { return default(string); } set { } }
+        public string Namespace { get { return default(string); } set { } }
+        public string DataType { get { return default(string); } set { } }
+    }
+    public partial class SoapAttributeOverrides
+    {
+        public void Add(Type type, SoapAttributes attributes) { }
+        public void Add(Type type, string member, SoapAttributes attributes) { }
+        public SoapAttributes this[Type type] { get { return default(SoapAttributes); } }
+        public SoapAttributes this[Type type, string member] { get { return default(SoapAttributes); } }
+    }
+    public partial class SoapAttributes
+    {
+        public SoapAttributes() { }
+        public SoapAttributes(System.Reflection.MemberInfo provider) { }
+        public SoapTypeAttribute SoapType { get { return default(SoapTypeAttribute); } set { } }
+        public SoapEnumAttribute SoapEnum { get { return default(SoapEnumAttribute); } set { } }
+        public bool SoapIgnore { get { return default(bool); } set { } }
+        public SoapElementAttribute SoapElement { get { return default(SoapElementAttribute); } set { } }
+        public SoapAttributeAttribute SoapAttribute { get { return default(SoapAttributeAttribute); } set { } }
+        public object SoapDefaultValue { get { return default(object); } set { } }
+    }
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.ReturnValue)]
+    public partial class SoapElementAttribute : System.Attribute
+    {
+        public SoapElementAttribute() { }
+        public SoapElementAttribute(string elementName) { }
+        public string ElementName { get { return default(string); } set { } }
+        public string DataType { get { return default(string); } set { } }
+        public bool IsNullable { get { return default(bool); } set { } }
+    }
+    [AttributeUsage(AttributeTargets.Field)]
+    public partial class SoapEnumAttribute : System.Attribute
+    {
+        public SoapEnumAttribute() { }
+        public SoapEnumAttribute(string name) { }
+        public string Name { get { return default(string); } set { } }
+    }
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.ReturnValue)]
+    public partial class SoapIgnoreAttribute : System.Attribute
+    {
+        public SoapIgnoreAttribute() { }
+    }
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface | AttributeTargets.Method, AllowMultiple = true)]
+    public partial class SoapIncludeAttribute : System.Attribute
+    {
+        public SoapIncludeAttribute(Type type) { }
+        public Type Type { get { return default(Type); } set { } }
+    }
+    public partial class SoapReflectionImporter
+    {
+        public SoapReflectionImporter() { }
+        public SoapReflectionImporter(string defaultNamespace) { }
+        public SoapReflectionImporter(SoapAttributeOverrides attributeOverrides) { }
+        public SoapReflectionImporter(SoapAttributeOverrides attributeOverrides, string defaultNamespace) { }
+        public void IncludeTypes(System.Reflection.MemberInfo memberInfo) { }
+        public void IncludeType(Type type) { }
+        public XmlTypeMapping ImportTypeMapping(Type type)
+        {
+            return default(XmlTypeMapping);
+        }
+        public XmlTypeMapping ImportTypeMapping(Type type, string defaultNamespace)
+        {
+            return default(XmlTypeMapping);
+        }
+        public XmlMembersMapping ImportMembersMapping(string elementName, string ns, XmlReflectionMember[] members)
+        {
+            return default(XmlMembersMapping);
+        }
+        public XmlMembersMapping ImportMembersMapping(string elementName, string ns, XmlReflectionMember[] members, bool hasWrapperElement, bool writeAccessors)
+        {
+            return default(XmlMembersMapping);
+        }
+        public XmlMembersMapping ImportMembersMapping(string elementName, string ns, XmlReflectionMember[] members, bool hasWrapperElement, bool writeAccessors, bool validate)
+        {
+            return default(XmlMembersMapping);
+        }
+        public XmlMembersMapping ImportMembersMapping(string elementName, string ns, XmlReflectionMember[] members, bool hasWrapperElement, bool writeAccessors, bool validate, XmlMappingAccess access)
+        {
+            return default(XmlMembersMapping);
+        }
+    }
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Struct)]
+    public partial class SoapTypeAttribute : System.Attribute
+    {
+        public SoapTypeAttribute() { }
+        public SoapTypeAttribute(string typeName) { }
+        public SoapTypeAttribute(string typeName, string ns) { }
+        public bool IncludeInSchema { get { return default(bool); } set { } }
+        public string TypeName { get { return default(string); } set { } }
+        public string Namespace { get { return default(string); } set { } }
+    }
 }

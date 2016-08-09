@@ -696,4 +696,28 @@
   <data name="Arg_RemoveArgNotFound" xml:space="preserve">
     <value>Cannot remove the specified item because it was not found in the specified Collection.</value>
   </data>
+  <data name="XmlRpcRefsInValueType" xml:space="preserve">
+    <value>Cannot serialize {0}. References in structs are not supported with encoded SOAP.</value>
+  </data>
+  <data name="XmlRpcNestedValueType" xml:space="preserve">
+    <value>Cannot serialize {0}. Nested structs are not supported with encoded SOAP.</value>
+  </data>
+  <data name="XmlRpcArrayOfValueTypes" xml:space="preserve">
+    <value>Cannot serialize {0}. Arrays of structs are not supported with encoded SOAP.</value>
+  </data>
+  <data name="XmlInvalidSoapArray" xml:space="preserve">
+    <value>An array of type {0} may not be used with XmlArrayType.Soap.</value>
+  </data>
+  <data name="XmlInvalidEnumAttribute" xml:space="preserve">
+    <value>Only SoapEnum may be used on enum constants.</value>
+  </data>
+  <data name="XmlInvalidVoid" xml:space="preserve">
+    <value>The type Void is not valid in this context.</value>
+  </data>
+  <data name="XmlInvalidElementAttribute" xml:space="preserve">
+    <value>Only SoapElementAttribute or SoapAttributeAttribute may be used on members.</value>
+  </data>
+  <data name="XmlInvalidDefaultEnumValue" xml:space="preserve">
+    <value>Enum {0} cannot be converted to {1}.</value>
+  </data>
 </root>
