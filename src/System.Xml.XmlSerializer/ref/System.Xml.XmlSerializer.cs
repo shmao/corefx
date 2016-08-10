@@ -392,10 +392,11 @@ namespace System.Xml.Serialization
         public string TypeName { get { return default(string); } set { } }
         public string Namespace { get { return default(string); } set { } }
     }
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Struct, AllowMultiple=false)]
-    public sealed partial class XmlSerializerAssemblyAttribute : System.Attribute {
-        public XmlSerializerAssemblyAttribute() {}
-        public XmlSerializerAssemblyAttribute(string assemblyName) {}
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Struct, AllowMultiple = false)]
+    public sealed partial class XmlSerializerAssemblyAttribute : System.Attribute
+    {
+        public XmlSerializerAssemblyAttribute() { }
+        public XmlSerializerAssemblyAttribute(string assemblyName) { }
         public XmlSerializerAssemblyAttribute(string assemblyName, string codeBase) { }
         public string CodeBase { get { return default(string); } set { } }
         public string AssemblyName { get { return default(string); } set { } }
@@ -410,4 +411,214 @@ namespace System.Xml.Serialization
         public string Namespace { get { return default(string); } set { } }
         public Type Type { get { return default(Type); } set { } }
     }
+    public abstract class XmlSerializationWriter : XmlSerializationGeneratedCode
+    {
+        protected XmlSerializationWriter() { }
+        protected void AddWriteCallback(Type type, string typeName, string typeNs, XmlSerializationWriteCallback callback) { }
+        protected Exception CreateChoiceIdentifierValueException(string value, string identifier, string name, string ns) { return default(Exception); }
+        protected Exception CreateInvalidAnyTypeException(object o) { return default(Exception); }
+        protected Exception CreateInvalidAnyTypeException(Type type) { return default(Exception); }
+        protected Exception CreateInvalidChoiceIdentifierValueException(string type, string identifier) { return default(Exception); }
+        protected Exception CreateInvalidEnumValueException(object value, string typeName) { return default(Exception); }
+        protected Exception CreateMismatchChoiceException(string value, string elementName, string enumValue) { return default(Exception); }
+        protected Exception CreateUnknownAnyElementException(string name, string ns) { return default(Exception); }
+        protected Exception CreateUnknownTypeException(object o) { return default(Exception); }
+        protected Exception CreateUnknownTypeException(Type type) { return default(Exception); }
+        protected static byte[] FromByteArrayBase64(byte[] value) { return default(byte[]); }
+        protected static string FromByteArrayHex(byte[] value) { return default(string); }
+        protected static string FromChar(char value) { return default(string); }
+        protected static string FromDate(DateTime value) { return default(string); }
+        protected static string FromDateTime(DateTime value) { return default(string); }
+        protected static string FromEnum(long value, string[] values, long[] ids) { return default(string); }
+        protected static string FromEnum(long value, string[] values, long[] ids, string typeName) { return default(string); }
+        protected static string FromTime(DateTime value) { return default(string); }
+        protected static string FromXmlName(string name) { return default(string); }
+        protected static string FromXmlNCName(string ncName) { return default(string); }
+        protected static string FromXmlNmToken(string nmToken) { return default(string); }
+        protected static string FromXmlNmTokens(string nmTokens) { return default(string); }
+        protected string FromXmlQualifiedName(System.Xml.XmlQualifiedName xmlQualifiedName) { return default(string); }
+        protected string FromXmlQualifiedName(System.Xml.XmlQualifiedName xmlQualifiedName, bool ignoreEmpty) { return default(string); }
+        protected abstract void InitCallbacks();
+        protected static System.Reflection.Assembly ResolveDynamicAssembly(string assemblyFullName) { return default(System.Reflection.Assembly); }
+        protected void TopLevelElement() { }
+        protected void WriteAttribute(string localName, string value) { }
+        protected void WriteAttribute(string localName, byte[] value) { }
+        protected void WriteAttribute(string localName, string ns, string value) { }
+        protected void WriteAttribute(string localName, string ns, byte[] value) { }
+        protected void WriteAttribute(string prefix, string localName, string ns, string value) { }
+        protected void WriteElementEncoded(System.Xml.XmlNode node, string name, string ns, bool isNullable, bool any) { }
+        protected void WriteElementLiteral(System.Xml.XmlNode node, string name, string ns, bool isNullable, bool any) { }
+        protected void WriteElementQualifiedName(string localName, System.Xml.XmlQualifiedName value) { }
+        protected void WriteElementQualifiedName(string localName, string ns, System.Xml.XmlQualifiedName value) { }
+        protected void WriteElementQualifiedName(string localName, System.Xml.XmlQualifiedName value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteElementQualifiedName(string localName, string ns, System.Xml.XmlQualifiedName value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteElementString(string localName, string value) { }
+        protected void WriteElementString(string localName, string ns, string value) { }
+        protected void WriteElementString(string localName, string value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteElementString(string localName, string ns, string value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteElementStringRaw(string localName, string value) { }
+        protected void WriteElementStringRaw(string localName, byte[] value) { }
+        protected void WriteElementStringRaw(string localName, string ns, string value) { }
+        protected void WriteElementStringRaw(string localName, string ns, byte[] value) { }
+        protected void WriteElementStringRaw(string localName, string value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteElementStringRaw(string localName, byte[] value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteElementStringRaw(string localName, string ns, string value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteElementStringRaw(string localName, string ns, byte[] value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteEmptyTag(string name) { }
+        protected void WriteEmptyTag(string name, string ns) { }
+        protected void WriteEndElement() { }
+        protected void WriteEndElement(object o) { }
+        protected void WriteId(object o) { }
+        protected void WriteNamespaceDeclarations(XmlSerializerNamespaces xmlns) { }
+        protected void WriteNullableQualifiedNameEncoded(string name, string ns, System.Xml.XmlQualifiedName value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteNullableQualifiedNameLiteral(string name, string ns, System.Xml.XmlQualifiedName value) { }
+        protected void WriteNullableStringEncoded(string name, string ns, string value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteNullableStringEncodedRaw(string name, string ns, string value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteNullableStringEncodedRaw(string name, string ns, byte[] value, System.Xml.XmlQualifiedName xsiType) { }
+        protected void WriteNullableStringLiteral(string name, string ns, string value) { }
+        protected void WriteNullableStringLiteralRaw(string name, string ns, string value) { }
+        protected void WriteNullableStringLiteralRaw(string name, string ns, byte[] value) { }
+        protected void WriteNullTagEncoded(string name) { }
+        protected void WriteNullTagEncoded(string name, string ns) { }
+        protected void WriteNullTagLiteral(string name) { }
+        protected void WriteNullTagLiteral(string name, string ns) { }
+        protected void WritePotentiallyReferencingElement(string n, string ns, object o) { }
+        protected void WritePotentiallyReferencingElement(string n, string ns, object o, Type ambientType) { }
+        protected void WritePotentiallyReferencingElement(string n, string ns, object o, Type ambientType, bool suppressReference) { }
+        protected void WritePotentiallyReferencingElement(string n, string ns, object o, Type ambientType, bool suppressReference, bool isNullable) { }
+        protected void WriteReferencedElements() { }
+        protected void WriteReferencingElement(string n, string ns, object o) { }
+        protected void WriteReferencingElement(string n, string ns, object o, bool isNullable) { }
+        protected void WriteRpcResult(string name, string ns) { }
+        protected void WriteSerializable(IXmlSerializable serializable, string name, string ns, bool isNullable) { }
+        protected void WriteSerializable(IXmlSerializable serializable, string name, string ns, bool isNullable, bool wrapped) { }
+        protected void WriteStartDocument() { }
+        protected void WriteStartElement(string name) { }
+        protected void WriteStartElement(string name, string ns) { }
+        protected void WriteStartElement(string name, string ns, bool writePrefixed) { }
+        protected void WriteStartElement(string name, string ns, object o) { }
+        protected void WriteStartElement(string name, string ns, object o, bool writePrefixed) { }
+        protected void WriteStartElement(string name, string ns, object o, bool writePrefixed, XmlSerializerNamespaces xmlns) { }
+        protected void WriteTypedPrimitive(string name, string ns, object o, bool xsiType) { }
+        protected void WriteValue(string value) { }
+        protected void WriteValue(byte[] value) { }
+        protected void WriteXmlAttribute(System.Xml.XmlNode node) { }
+        protected void WriteXmlAttribute(System.Xml.XmlNode node, object container) { }
+        protected void WriteXsiType(string name, string ns) { }
+        protected bool EscapeName { get { return default(bool); } set { } }
+        protected System.Collections.ArrayList Namespaces { get { return default(System.Collections.ArrayList); } set { } }
+        protected System.Xml.XmlWriter Writer { get { return default(System.Xml.XmlWriter); } set { } }
+    }
+    public abstract partial class XmlSerializationGeneratedCode
+    {
+    }
+    public delegate void XmlSerializationWriteCallback(object o);
+    public abstract partial class XmlSerializerImplementation
+    {
+        public virtual XmlSerializationReader Reader { get { return default(XmlSerializationReader); } }
+        public virtual XmlSerializationWriter Writer { get { return default(XmlSerializationWriter); } }
+        public virtual System.Collections.Hashtable ReadMethods { get { return default(System.Collections.Hashtable); } }
+        public virtual System.Collections.Hashtable WriteMethods { get { return default(System.Collections.Hashtable); } }
+        public virtual System.Collections.Hashtable TypedSerializers { get { return default(System.Collections.Hashtable); } }
+        public virtual bool CanSerialize(Type type) { return default(bool); }
+        public virtual XmlSerializer GetSerializer(Type type) { return default(XmlSerializer); }
+    }
+    public abstract partial class XmlSerializationReader : XmlSerializationGeneratedCode
+    {
+        protected XmlSerializationReader() { }
+        protected void AddFixup(CollectionFixup fixup) { }
+        protected void AddFixup(Fixup fixup) { }
+        protected void AddReadCallback(string name, string ns, Type type, XmlSerializationReadCallback read) { }
+        protected void AddTarget(string id, object o) { }
+        protected void CheckReaderCount(ref int whileIterations, ref int readerCount) { }
+        protected string CollapseWhitespace(string value) { return default(string); }
+        protected Exception CreateAbstractTypeException(string name, string ns) { return default(Exception); }
+        protected Exception CreateBadDerivationException(string xsdDerived, string nsDerived, string xsdBase, string nsBase, string clrDerived, string clrBase) { return default(Exception); }
+        protected Exception CreateCtorHasSecurityException(string typeName) { return default(Exception); }
+        protected Exception CreateInaccessibleConstructorException(string typeName) { return default(Exception); }
+        protected Exception CreateInvalidCastException(Type type, object value) { return default(Exception); }
+        protected Exception CreateInvalidCastException(Type type, object value, string id) { return default(Exception); }
+        protected Exception CreateMissingIXmlSerializableType(string name, string ns, string clrType) { return default(Exception); }
+        protected Exception CreateReadOnlyCollectionException(string name) { return default(Exception); }
+        protected Exception CreateUnknownConstantException(string value, Type enumType) { return default(Exception); }
+        protected Exception CreateUnknownNodeException() { return default(Exception); }
+        protected Exception CreateUnknownTypeException(System.Xml.XmlQualifiedName type) { return default(Exception); }
+        protected Array EnsureArrayIndex(Array a, int index, Type elementType) { return default(Array); }
+        protected void FixupArrayRefs(object fixup) { }
+        protected int GetArrayLength(string name, string ns) { return default(int); }
+        protected bool GetNullAttr() { return default(bool); }
+        protected object GetTarget(string id) { return default(object); }
+        protected System.Xml.XmlQualifiedName GetXsiType() { return default(System.Xml.XmlQualifiedName); }
+        protected abstract void InitCallbacks();
+        protected abstract void InitIDs();
+        protected bool IsXmlnsAttribute(string name) { return default(bool); }
+        protected void ParseWsdlArrayType(XmlAttribute attr) { }
+        protected System.Xml.XmlQualifiedName ReadElementQualifiedName() { return default(System.Xml.XmlQualifiedName); }
+        protected void ReadEndElement() { }
+        protected bool ReadNull() { return default(bool); }
+        protected System.Xml.XmlQualifiedName ReadNullableQualifiedName() { return default(System.Xml.XmlQualifiedName); }
+        protected string ReadNullableString() { return default(string); }
+        protected bool ReadReference(out string fixupReference) { fixupReference = default(string); return default(bool); }
+        protected object ReadReferencedElement() { return default(object); }
+        protected object ReadReferencedElement(string name, string ns) { return default(object); }
+        protected void ReadReferencedElements() { }
+        protected object ReadReferencingElement(out string fixupReference) { fixupReference = default(string); return default(object); }
+        protected object ReadReferencingElement(string name, string ns, out string fixupReference) { fixupReference = default(string); return default(object); }
+        protected object ReadReferencingElement(string name, string ns, bool elementCanBeType, out string fixupReference) { fixupReference = default(string); return default(object); }
+        protected IXmlSerializable ReadSerializable(IXmlSerializable serializable) { return default(IXmlSerializable); }
+        protected IXmlSerializable ReadSerializable(IXmlSerializable serializable, bool wrappedAny) { return default(IXmlSerializable); }
+        protected string ReadString(string value) { return default(string); }
+        protected string ReadString(string value, bool trim) { return default(string); }
+        protected object ReadTypedNull(System.Xml.XmlQualifiedName type) { return default(object); }
+        protected object ReadTypedPrimitive(System.Xml.XmlQualifiedName type) { return default(object); }
+        protected System.Xml.XmlDocument ReadXmlDocument(bool wrapped) { return default(System.Xml.XmlDocument); }
+        protected System.Xml.XmlNode ReadXmlNode(bool wrapped) { return default(System.Xml.XmlNode); }
+        protected void Referenced(object o) { }
+        protected static System.Reflection.Assembly ResolveDynamicAssembly(string assemblyFullName) { return default(System.Reflection.Assembly); }
+        protected Array ShrinkArray(Array a, int length, Type elementType, bool isNullable) { return default(Array); }
+        protected byte[] ToByteArrayBase64(bool isNull) { return default(byte[]); }
+        protected static byte[] ToByteArrayBase64(string value) { return default(byte[]); }
+        protected byte[] ToByteArrayHex(bool isNull) { return default(byte[]); }
+        protected static byte[] ToByteArrayHex(string value) { return default(byte[]); }
+        protected static char ToChar(string value) { return default(char); }
+        protected static DateTime ToDate(string value) { return default(DateTime); }
+        protected static DateTime ToDateTime(string value) { return default(DateTime); }
+        protected static long ToEnum(string value, System.Collections.Hashtable h, string typeName) { return default(long); }
+        protected static DateTime ToTime(string value) { return default(DateTime); }
+        protected static string ToXmlName(string value) { return default(string); }
+        protected static string ToXmlNCName(string value) { return default(string); }
+        protected static string ToXmlNmToken(string value) { return default(string); }
+        protected static string ToXmlNmTokens(string value) { return default(string); }
+        protected System.Xml.XmlQualifiedName ToXmlQualifiedName(string value) { return default(System.Xml.XmlQualifiedName); }
+        protected void UnknownAttribute(object o, XmlAttribute attr) { }
+        protected void UnknownAttribute(object o, XmlAttribute attr, string qnames) { }
+        protected void UnknownElement(object o, XmlElement elem) { }
+        protected void UnknownElement(object o, XmlElement elem, string qnames) { }
+        protected void UnknownNode(object o) { }
+        protected void UnknownNode(object o, string qnames) { }
+        protected void UnreferencedObject(string id, object o) { }
+        protected bool DecodeName { get { return default(bool); } set { } }
+        protected System.Xml.XmlDocument Document { get { return default(System.Xml.XmlDocument); } }
+        protected bool IsReturnValue { get { return default(bool); } set { } }
+        protected System.Xml.XmlReader Reader { get { return default(System.Xml.XmlReader); } }
+        protected int ReaderCount { get { return default(int); } }
+        protected class CollectionFixup
+        {
+            public CollectionFixup(object collection, XmlSerializationCollectionFixupCallback callback, object collectionItems) { }
+            public XmlSerializationCollectionFixupCallback Callback { get { return default(XmlSerializationCollectionFixupCallback); } }
+            public object Collection { get { return default(object); } }
+            public object CollectionItems { get { return default(object); } }
+        }
+        protected class Fixup
+        {
+            public Fixup(object o, XmlSerializationFixupCallback callback, int count) { }
+            public Fixup(object o, XmlSerializationFixupCallback callback, string[] ids) { }
+            public XmlSerializationFixupCallback Callback { get { return default(XmlSerializationFixupCallback); } }
+            public string[] Ids { get { return default(string[]); } }
+            public object Source { get { return default(object); } set { } }
+        }
+    }
+    public delegate void XmlSerializationFixupCallback(object fixup);
+    public delegate void XmlSerializationCollectionFixupCallback(object collection, object collectionItems);
+    public delegate object XmlSerializationReadCallback();
 }
