@@ -392,4 +392,22 @@ namespace System.Xml.Serialization
         public string TypeName { get { return default(string); } set { } }
         public string Namespace { get { return default(string); } set { } }
     }
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Struct, AllowMultiple=false)]
+    public sealed partial class XmlSerializerAssemblyAttribute : System.Attribute {
+        public XmlSerializerAssemblyAttribute() {}
+        public XmlSerializerAssemblyAttribute(string assemblyName) {}
+        public XmlSerializerAssemblyAttribute(string assemblyName, string codeBase) { }
+        public string CodeBase { get { return default(string); } set { } }
+        public string AssemblyName { get { return default(string); } set { } }
+    }
+    [AttributeUsage(AttributeTargets.Assembly)]
+    public sealed partial class XmlSerializerVersionAttribute : System.Attribute
+    {
+        public XmlSerializerVersionAttribute() { }
+        public XmlSerializerVersionAttribute(Type type) { }
+        public string ParentAssemblyId { get { return default(string); } set { } }
+        public string Version { get { return default(string); } set { } }
+        public string Namespace { get { return default(string); } set { } }
+        public Type Type { get { return default(Type); } set { } }
+    }
 }

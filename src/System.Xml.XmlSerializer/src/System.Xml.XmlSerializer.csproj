@@ -86,7 +86,9 @@
     <Compile Include="System\Xml\Serialization\XmlSerializationReader.cs" />
     <Compile Include="System\Xml\Serialization\XmlSerializationWriter.cs" />
     <Compile Include="System\Xml\Serialization\XmlSerializer.cs" />
+    <Compile Include="System\Xml\Serialization\XmlSerializerAssemblyAttribute.cs" />
     <Compile Include="System\Xml\Serialization\XmlSerializerNamespaces.cs" />
+    <Compile Include="System\Xml\Serialization\XmlSerializerVersionAttribute.cs" />
     <Compile Include="System\Xml\Serialization\XmlTextAttribute.cs" />
     <Compile Include="System\Xml\Serialization\XmlTypeAttribute.cs" />
     <Compile Include="System\Xml\Serialization\XmlTypeMapping.cs" />
