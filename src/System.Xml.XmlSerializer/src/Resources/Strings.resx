@@ -507,6 +507,9 @@
   <data name="XmlInternalErrorMethod" xml:space="preserve">
     <value>Internal error: missing generated method for {0}.</value>
   </data>
+  <data name="XmlInternalErrorMethodNotFound" xml:space="preserve">
+    <value>Internal error: method {0} was not found in type {1}.</value>
+  </data>
   <data name="Arg_NeverValueType" xml:space="preserve">
     <value>Only TypeKind.Root can be set for typeof(object) which is never value type.</value>
   </data>
