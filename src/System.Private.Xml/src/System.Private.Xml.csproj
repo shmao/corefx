@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-	<Configuration Condition="'$(Configuration)'==''">Windows_Debug</Configuration>
+    <Configuration Condition="'$(Configuration)'==''">Windows_Debug</Configuration>
   </PropertyGroup>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), dir.props))\dir.props" />
   <PropertyGroup>
@@ -346,7 +346,6 @@
     <Compile Include="System\Xml\Schema\XmlSchemaComplexContentExtension.cs" />
     <Compile Include="System\Xml\Schema\XmlSchemaComplexContentRestriction.cs" />
     <Compile Include="System\Xml\Schema\XmlSchemaComplexType.cs" />
-    <Compile Include="System\Xml\Schema\XmlSchemaConstants.cs" />
     <Compile Include="System\Xml\Schema\XmlSchemaContent.cs" />
     <Compile Include="System\Xml\Schema\XmlSchemaContentModel.cs" />
     <Compile Include="System\Xml\Schema\XmlSchemaContentProcessing.cs" />
