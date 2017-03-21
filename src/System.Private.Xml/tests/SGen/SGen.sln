@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26117.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGen", "SGen.csproj", "{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		netcoreapp-Debug|Any CPU = netcoreapp-Debug|Any CPU
+		netcoreapp-Release|Any CPU = netcoreapp-Release|Any CPU
+		netstandard-Debug|Any CPU = netstandard-Debug|Any CPU
+		netstandard-Release|Any CPU = netstandard-Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}.netcoreapp-Debug|Any CPU.ActiveCfg = netcoreapp-Debug|Any CPU
+		{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}.netcoreapp-Debug|Any CPU.Build.0 = netcoreapp-Debug|Any CPU
+		{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}.netcoreapp-Release|Any CPU.ActiveCfg = netcoreapp-Release|Any CPU
+		{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}.netcoreapp-Release|Any CPU.Build.0 = netcoreapp-Release|Any CPU
+		{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}.netstandard-Debug|Any CPU.ActiveCfg = netstandard-Debug|Any CPU
+		{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}.netstandard-Debug|Any CPU.Build.0 = netstandard-Debug|Any CPU
+		{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}.netstandard-Release|Any CPU.ActiveCfg = netstandard-Release|Any CPU
+		{4050F1D1-1DD2-4B48-A17B-E3F90DD18C4B}.netstandard-Release|Any CPU.Build.0 = netstandard-Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
