@@ -19,7 +19,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using Xunit;
-
+using System.Diagnostics;
 
 public static partial class DataContractSerializerTests
 {
@@ -2760,6 +2760,59 @@ public static partial class DataContractSerializerTests
         Assert.Null(actual.DelegateProperty);
         Assert.Equal(value.IntProperty, actual.IntProperty);
     }
+
+    #region DesktopTest
+
+    /// <summary>
+    /// Roundtrips a Datacontract type  which contains Primitive types assigned to member of type object. 
+    /// Resolver is plugged in and resolves the primitive types. Verify resolver called during ser and deser
+    /// </summary>
+    [Fact]
+    public static void DCS_BasicRoundTripResolvePrimitiveTypes()
+    {
+        var dataContractSerializerSettings = new DataContractSerializerSettings()
+        {
+            DataContractResolver = new DesktopTestData.PrimitiveTypeResolver()
+            , IgnoreExtensionDataObject = false
+            , KnownTypes = null
+            , MaxItemsInObjectGraph = int.MaxValue
+            , PreserveObjectReferences = false
+        };
+
+        string baseline = "";
+        var value = new DesktopTestData.ObjectContainer(new DesktopTestData.PrimitiveContainer());
+
+        var actual = SerializeAndDeserialize(value, baseline, dataContractSerializerSettings, skipStringCompare:true);
+
+        // Throw Exception when verification failed
+        DesktopTestData.ComparisonHelper.CompareRecursively(value, actual);
+    }
+
+    /// <summary>
+    /// Roundtrip Datacontract types  which contains members of type enum and struct.
+    /// Some enums are resolved by Resolver and others by the KT attribute.
+    /// Enum and struct members are of base enum type and ValueTyperespecitively
+    /// </summary>
+    [Fact]
+    public static void DCS_BasicRoundTripResolveEnumStructTypes()
+    {
+        var dataContractSerializerSettings = new DataContractSerializerSettings()
+        {
+            DataContractResolver = new DesktopTestData.PrimitiveTypeResolver()
+            , IgnoreExtensionDataObject = false
+            , KnownTypes = null
+            , MaxItemsInObjectGraph = int.MaxValue
+            , PreserveObjectReferences = false
+        };
+
+        string baseline = @"<ObjectContainer xmlns=""http://schemas.datacontract.org/2004/07/DesktopTestData"" xmlns:i=""http://www.w3.org/2001/XMLSchema-instance""><data i:type=""a:EnumStructContainer"" xmlns:a=""http://www.default.com""><enumArrayData xmlns:b=""http://schemas.microsoft.com/2003/10/Serialization/Arrays""><b:anyType i:type=""a:1munemy"">red</b:anyType><b:anyType i:type=""a:1munemy"">black</b:anyType><b:anyType i:type=""a:1munemy"">blue</b:anyType><b:anyType i:type=""a:1"">Autumn</b:anyType><b:anyType i:type=""a:2"">Spring</b:anyType></enumArrayData><p1 i:type=""a:VT_foo""><b>10</b></p1><p2 i:type=""a:NotSer_foo""><a>0</a></p2><p3 i:type=""a:MyStruct_foo""><globName i:nil=""true""/><value>0</value></p3></data><data2 i:type=""a:EnumStructContainer"" xmlns:a=""http://www.default.com""><enumArrayData xmlns:b=""http://schemas.microsoft.com/2003/10/Serialization/Arrays""><b:anyType i:type=""a:1munemy"">red</b:anyType><b:anyType i:type=""a:1munemy"">black</b:anyType><b:anyType i:type=""a:1munemy"">blue</b:anyType><b:anyType i:type=""a:1"">Autumn</b:anyType><b:anyType i:type=""a:2"">Spring</b:anyType></enumArrayData><p1 i:type=""a:VT_foo""><b>10</b></p1><p2 i:type=""a:NotSer_foo""><a>0</a></p2><p3 i:type=""a:MyStruct_foo""><globName i:nil=""true""/><value>0</value></p3></data2></ObjectContainer>";
+        var value = new DesktopTestData.ObjectContainer(new DesktopTestData.EnumStructContainer());
+
+        var actual = SerializeAndDeserialize(value, baseline, dataContractSerializerSettings);
+        DesktopTestData.ComparisonHelper.CompareRecursively(value, actual);
+    }
+
+    #endregion
 
     private static T SerializeAndDeserialize<T>(T value, string baseline, DataContractSerializerSettings settings = null, Func<DataContractSerializer> serializerFactory = null, bool skipStringCompare = false)
     {
