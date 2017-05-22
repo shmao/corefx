@@ -621,7 +621,7 @@ namespace System.Xml.Serialization
                         }
 
                         XmlSerializationReader reader = this.innerSerializer.CreateReader();
-                        reader.Init(xmlReader, encodingStyle);
+                        reader.Init(xmlReader, events, encodingStyle);
                         try
                         {
                             return this.innerSerializer.Deserialize(reader);
