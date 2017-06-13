@@ -2264,6 +2264,16 @@ public static partial class DataContractJsonSerializerTests
     }
 
     [Fact]
+    public static void DCJS_SerializableTypeWithAmbiguousCtor()
+    {
+        var value = new SerializableTypeWithAmbiguousCtor<int>("test", 12);
+        SerializableTypeWithAmbiguousCtor<int> actual = SerializeAndDeserialize(value, "{\"_stringValue\":\"test12\"}");
+
+        Assert.NotNull(actual);
+        Assert.Equal(value.StringValue, actual.StringValue);
+    }
+
+    [Fact]
     public static void DCJS_ConstructorWithRootName()
     {
         var value = new TypeForRootNameTest() { StringProperty = "Test String" };

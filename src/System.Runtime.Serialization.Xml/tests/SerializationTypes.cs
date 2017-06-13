@@ -4024,6 +4024,38 @@ public class MyISerializableType : ISerializable
     }
 }
 
+[Serializable]
+public class SerializableTypeWithAmbiguousCtor<T> : ISerializable
+{
+    public SerializableTypeWithAmbiguousCtor()
+    {
+    }
+
+    private string _stringValue;
+
+    public string StringValue
+    {
+        get { return _stringValue; }
+        set { _stringValue = value; }
+    }
+
+    public void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        info.AddValue(nameof(_stringValue), _stringValue, typeof(string));
+
+    }
+
+    public SerializableTypeWithAmbiguousCtor(SerializationInfo info, StreamingContext context)
+    {
+        _stringValue = (string)info.GetValue(nameof(_stringValue), typeof(string));
+    }
+
+    public SerializableTypeWithAmbiguousCtor(string stringValue, T tValue)
+    {
+        _stringValue = stringValue + tValue.ToString();
+    }
+}
+
 [DataContract]
 public class TypeForRootNameTest
 {
