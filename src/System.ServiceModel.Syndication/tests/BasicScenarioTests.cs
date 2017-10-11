@@ -300,6 +300,7 @@ namespace System.ServiceModel.Syndication.Tests
         }
         
         [Fact]
+        [ActiveIssue(24571)]
         public static void AtomEntryPositiveTest()
         {
             string filePath = @"brief-entry-noerror.xml";
@@ -317,7 +318,6 @@ namespace System.ServiceModel.Syndication.Tests
                 f.WriteToAsync(writer).GetAwaiter().GetResult();
                 writer.Close();
 
-                //TODO:
                 // compare file filePath and serializeFilePath
                 XmlDiff diff = new XmlDiff();
                 Assert.True(diff.Compare(filePath, serializeFilePath));
@@ -328,8 +328,8 @@ namespace System.ServiceModel.Syndication.Tests
             }
         }
 
-        //result not except
         [Fact]
+        [ActiveIssue(24572)]
         public static void AtomEntryPositiveTest_write()
         {
             SyndicationItem item1 = new SyndicationItem("SyndicationFeed released for .net Core", "A lot of text describing the release of .net core feature", new Uri("http://Contoso.com/news/path"));
@@ -343,6 +343,9 @@ namespace System.ServiceModel.Syndication.Tests
                 Task task = f.WriteToAsync(writer);
                 Task.WhenAll(task);
                 writer.Close();
+
+                //TODO:
+                // Check file content
             }
             finally
             {
