@@ -46,14 +46,14 @@ namespace System.ServiceModel.Syndication
 
         public abstract void ReadFrom(XmlReader reader);
 
+        public abstract void WriteTo(XmlWriter writer);
+
         public abstract Task ReadFromAsync(XmlReader reader, CancellationToken ct);
 
         public override string ToString()
         {
             return string.Format(CultureInfo.CurrentCulture, "{0}, SyndicationVersion={1}", this.GetType(), this.Version);
         }
-
-        public abstract void WriteTo(XmlWriter writer);
 
         public abstract Task WriteToAsync(XmlWriter writer, CancellationToken ct);
 

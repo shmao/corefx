@@ -60,7 +60,7 @@ namespace System.ServiceModel.Syndication
             get { return App10Constants.Namespace; }
         }
 
-        public override Task<bool> CanReadAsync(XmlReader reader)
+        public override bool CanRead(XmlReader reader)
         {
             if (reader == null)
             {
@@ -68,7 +68,7 @@ namespace System.ServiceModel.Syndication
             }
 
             XmlReaderWrapper readerWrapper = XmlReaderWrapper.CreateFromReader(reader);
-            return readerWrapper.IsStartElementAsync(App10Constants.Service, App10Constants.Namespace);
+            return readerWrapper.IsStartElement(App10Constants.Service, App10Constants.Namespace);
         }
 
         private Task ReadXml(XmlReaderWrapper reader)
@@ -81,21 +81,6 @@ namespace System.ServiceModel.Syndication
             return ReadDocumentAsync(reader);
         }
 
-        private Task WriteXml(XmlWriter writer)
-        {
-            if (writer == null)
-            {
-                throw new ArgumentNullException(nameof(writer));
-            }
-
-            if (this.Document == null)
-            {
-                throw new InvalidOperationException(SR.DocumentFormatterDoesNotHaveDocument);
-            }
-
-            return WriteDocumentAsync(XmlWriterWrapper.CreateFromWriter(writer));
-        }
-
         public override async Task ReadFromAsync(XmlReader reader)
         {
             if (reader == null)
@@ -106,7 +91,7 @@ namespace System.ServiceModel.Syndication
             XmlReaderWrapper wrappedReader = XmlReaderWrapper.CreateFromReader(reader);
             await wrappedReader.MoveToContentAsync();
 
-            if (!await CanReadAsync(reader))
+            if (!CanRead(reader))
             {
                 throw new XmlException(string.Format(SR.UnknownDocumentXml, reader.LocalName, reader.NamespaceURI));
             }
