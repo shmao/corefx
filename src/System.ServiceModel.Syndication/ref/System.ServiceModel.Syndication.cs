@@ -43,7 +43,7 @@ namespace System.ServiceModel.Syndication
         public Atom10FeedFormatter(TSyndicationFeed feedToWrite) { }
         protected override System.ServiceModel.Syndication.SyndicationFeed CreateFeedInstance() { throw null; }
     }
-    public partial class Atom10ItemFormatter : System.ServiceModel.Syndication.SyndicationItemFormatter
+    public partial class Atom10ItemFormatter : System.ServiceModel.Syndication.SyndicationItemFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public Atom10ItemFormatter() { }
         public Atom10ItemFormatter(System.ServiceModel.Syndication.SyndicationItem itemToWrite) { }
@@ -56,6 +56,9 @@ namespace System.ServiceModel.Syndication
         protected override System.ServiceModel.Syndication.SyndicationItem CreateItemInstance() { throw null; }
         public override void ReadFrom(System.Xml.XmlReader reader) { }
         public override System.Threading.Tasks.Task ReadFromAsync(System.Xml.XmlReader reader) { throw null; }
+        System.Xml.Schema.XmlSchema System.Xml.Serialization.IXmlSerializable.GetSchema() { throw null; }
+        void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader reader) { }
+        void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
         public override System.Threading.Tasks.Task WriteToAsync(System.Xml.XmlWriter writer) { throw null; }
     }
@@ -65,7 +68,7 @@ namespace System.ServiceModel.Syndication
         public Atom10ItemFormatter(TSyndicationItem itemToWrite) { }
         protected override System.ServiceModel.Syndication.SyndicationItem CreateItemInstance() { throw null; }
     }
-    public partial class AtomPub10CategoriesDocumentFormatter : System.ServiceModel.Syndication.CategoriesDocumentFormatter
+    public partial class AtomPub10CategoriesDocumentFormatter : System.ServiceModel.Syndication.CategoriesDocumentFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public AtomPub10CategoriesDocumentFormatter() { }
         public AtomPub10CategoriesDocumentFormatter(System.ServiceModel.Syndication.CategoriesDocument documentToWrite) { }
@@ -76,10 +79,13 @@ namespace System.ServiceModel.Syndication
         protected override System.ServiceModel.Syndication.ReferencedCategoriesDocument CreateReferencedCategoriesDocument() { throw null; }
         public override void ReadFrom(System.Xml.XmlReader reader) { }
         public override System.Threading.Tasks.Task ReadFromAsync(System.Xml.XmlReader reader) { throw null; }
+        System.Xml.Schema.XmlSchema System.Xml.Serialization.IXmlSerializable.GetSchema() { throw null; }
+        void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader reader) { }
+        void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
         public override System.Threading.Tasks.Task WriteToAsync(System.Xml.XmlWriter writer) { throw null; }
     }
-    public partial class AtomPub10ServiceDocumentFormatter : System.ServiceModel.Syndication.ServiceDocumentFormatter
+    public partial class AtomPub10ServiceDocumentFormatter : System.ServiceModel.Syndication.ServiceDocumentFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public AtomPub10ServiceDocumentFormatter() { }
         public AtomPub10ServiceDocumentFormatter(System.ServiceModel.Syndication.ServiceDocument documentToWrite) { }
@@ -89,6 +95,9 @@ namespace System.ServiceModel.Syndication
         protected override System.ServiceModel.Syndication.ServiceDocument CreateDocumentInstance() { throw null; }
         public override void ReadFrom(System.Xml.XmlReader reader) { }
         public override System.Threading.Tasks.Task ReadFromAsync(System.Xml.XmlReader reader) { throw null; }
+        System.Xml.Schema.XmlSchema System.Xml.Serialization.IXmlSerializable.GetSchema() { throw null; }
+        void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader reader) { }
+        void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
         public override System.Threading.Tasks.Task WriteToAsync(System.Xml.XmlWriter writer) { throw null; }
     }
@@ -174,7 +183,7 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual System.Threading.Tasks.Task WriteElementExtensionsAsync(System.Xml.XmlWriter writer, string version) { throw null; }
     }
-    public partial class Rss20FeedFormatter : System.ServiceModel.Syndication.SyndicationFeedFormatter
+    public partial class Rss20FeedFormatter : System.ServiceModel.Syndication.SyndicationFeedFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public Rss20FeedFormatter() { }
         public Rss20FeedFormatter(System.ServiceModel.Syndication.SyndicationFeed feedToWrite) { }
@@ -197,6 +206,9 @@ namespace System.ServiceModel.Syndication
         protected virtual System.Threading.Tasks.Task<System.ServiceModel.Syndication.SyndicationItem> ReadItemAsync(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationFeed feed) { throw null; }
         protected virtual System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.SyndicationItem> ReadItems(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationFeed feed, out bool areAllItemsRead) { areAllItemsRead = default(bool); throw null; }
         protected internal override void SetFeed(System.ServiceModel.Syndication.SyndicationFeed feed) { }
+        System.Xml.Schema.XmlSchema System.Xml.Serialization.IXmlSerializable.GetSchema() { throw null; }
+        void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader reader) { }
+        void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         protected virtual void WriteItem(System.Xml.XmlWriter writer, System.ServiceModel.Syndication.SyndicationItem item, System.Uri feedBaseUri) { }
         protected virtual System.Threading.Tasks.Task WriteItemAsync(System.Xml.XmlWriter writer, System.ServiceModel.Syndication.SyndicationItem item, System.Uri feedBaseUri) { throw null; }
         protected virtual void WriteItems(System.Xml.XmlWriter writer, System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.SyndicationItem> items, System.Uri feedBaseUri) { }
@@ -211,7 +223,7 @@ namespace System.ServiceModel.Syndication
         public Rss20FeedFormatter(TSyndicationFeed feedToWrite, bool serializeExtensionsAsAtom) { }
         protected override System.ServiceModel.Syndication.SyndicationFeed CreateFeedInstance() { throw null; }
     }
-    public partial class Rss20ItemFormatter : System.ServiceModel.Syndication.SyndicationItemFormatter
+    public partial class Rss20ItemFormatter : System.ServiceModel.Syndication.SyndicationItemFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public Rss20ItemFormatter() { }
         public Rss20ItemFormatter(System.ServiceModel.Syndication.SyndicationItem itemToWrite) { }
@@ -226,10 +238,13 @@ namespace System.ServiceModel.Syndication
         protected override System.ServiceModel.Syndication.SyndicationItem CreateItemInstance() { throw null; }
         public override void ReadFrom(System.Xml.XmlReader reader) { }
         public override System.Threading.Tasks.Task ReadFromAsync(System.Xml.XmlReader reader) { throw null; }
+        System.Xml.Schema.XmlSchema System.Xml.Serialization.IXmlSerializable.GetSchema() { throw null; }
+        void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader reader) { }
+        void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
         public override System.Threading.Tasks.Task WriteToAsync(System.Xml.XmlWriter writer) { throw null; }
     }
-    public partial class Rss20ItemFormatter<TSyndicationItem> : System.ServiceModel.Syndication.Rss20ItemFormatter where TSyndicationItem : System.ServiceModel.Syndication.SyndicationItem, new()
+    public partial class Rss20ItemFormatter<TSyndicationItem> : System.ServiceModel.Syndication.Rss20ItemFormatter, System.Xml.Serialization.IXmlSerializable where TSyndicationItem : System.ServiceModel.Syndication.SyndicationItem, new()
     {
         public Rss20ItemFormatter() { }
         public Rss20ItemFormatter(TSyndicationItem itemToWrite) { }
