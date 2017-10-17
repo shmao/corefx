@@ -393,7 +393,7 @@ namespace System.ServiceModel.Syndication
             writer.WriteAttributeString("xml", "lang", Atom10FeedFormatter.XmlNs, lang);
         }
 
-        private async Task<ResourceCollectionInfo> ReadCollection(XmlReaderWrapper reader, Workspace workspace)
+        private async Task<ResourceCollectionInfo> ReadCollectionAsync(XmlReaderWrapper reader, Workspace workspace)
         {
             ResourceCollectionInfo result = CreateCollection(workspace);
             result.BaseUri = workspace.BaseUri;
@@ -549,7 +549,7 @@ namespace System.ServiceModel.Syndication
                         {
                             if (await reader.IsStartElementAsync(App10Constants.Workspace, App10Constants.Namespace))
                             {
-                                result.Workspaces.Add(ReadWorkspace(reader, result).Result);
+                                result.Workspaces.Add(await ReadWorkspaceAsync(reader, result));
                             }
                             else if (!TryParseElement(reader, result, this.Version))
                             {
@@ -591,7 +591,7 @@ namespace System.ServiceModel.Syndication
             SetDocument(result);
         }
 
-        private async Task<Workspace> ReadWorkspace(XmlReaderWrapper reader, ServiceDocument document)
+        private async Task<Workspace> ReadWorkspaceAsync(XmlReaderWrapper reader, ServiceDocument document)
         {
             Workspace result = CreateWorkspace(document);
             result.BaseUri = document.BaseUri;
@@ -637,7 +637,7 @@ namespace System.ServiceModel.Syndication
                     }
                     else if (await reader.IsStartElementAsync(App10Constants.Collection, App10Constants.Namespace))
                     {
-                        result.Collections.Add(ReadCollection(reader, result).Result);
+                        result.Collections.Add(await ReadCollectionAsync(reader, result));
                     }
                     else if (!TryParseElement(reader, result, this.Version))
                     {
