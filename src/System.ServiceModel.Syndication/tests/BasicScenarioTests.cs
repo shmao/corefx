@@ -301,7 +301,7 @@ namespace System.ServiceModel.Syndication.Tests
 
         [Fact]
         [ActiveIssue(24571)]
-        public static async Task AtomEntryPositiveTest()
+        public static async Task AtomEntryPositiveTestAsync()
         {
             string filePath = @"brief-entry-noerror.xml";
             string serializeFilePath = Path.GetTempFileName();
@@ -374,13 +374,13 @@ namespace System.ServiceModel.Syndication.Tests
 
             try
             {
-                using (XmlWriter writer = XmlWriter.Create(serializeFilePath, new XmlWriterSettings()))
+                using (XmlWriter writer = XmlWriter.Create(serializeFilePath, new XmlWriterSettings() { Async = true }))
                 {
                     Atom10ItemFormatter f = new Atom10ItemFormatter(item);
                     await f.WriteToAsync(writer);
                     writer.Close();
                 }
-                
+
                 XmlDiff diff = new XmlDiff();
                 Assert.True(diff.Compare(filePath, serializeFilePath));
             }
@@ -404,13 +404,13 @@ namespace System.ServiceModel.Syndication.Tests
                     SyndicationFeed feedObjct;
                     CancellationToken ct = new CancellationToken();
 
-                    using (XmlReader reader = XmlReader.Create(file, new XmlReaderSettings()))
+                    using (XmlReader reader = XmlReader.Create(file, new XmlReaderSettings() { Async = true }))
                     {
                         feedObjct = await SyndicationFeed.LoadAsync(reader, ct);
                         reader.Close();
                     }
 
-                    using (XmlWriter writer = XmlWriter.Create(serializeFilePath))
+                    using (XmlWriter writer = XmlWriter.Create(serializeFilePath, new XmlWriterSettings() { Async = true }))
                     {
                         Atom10FeedFormatter f = new Atom10FeedFormatter(feedObjct);
                         await f.WriteToAsync(writer, ct);
