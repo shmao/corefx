@@ -300,8 +300,7 @@ namespace System.ServiceModel.Syndication.Tests
         }
 
         [Fact]
-        [ActiveIssue(24571)]
-        public static async Task AtomEntryPositiveTestAsync()
+        public static void AtomEntryPositiveTest()
         {
             string filePath = @"brief-entry-noerror.xml";
             string serializeFilePath = Path.GetTempFileName();
@@ -311,16 +310,17 @@ namespace System.ServiceModel.Syndication.Tests
                 SyndicationItem feedObjct = null;
                 using (XmlReader reader = XmlReader.Create(filePath, new XmlReaderSettings() { Async = true }))
                 {
-                    feedObjct = await SyndicationItem.LoadAsync(reader);
+                    feedObjct = SyndicationItem.Load(reader);
                     reader.Close();
                 }
 
                 using (XmlWriter writer = XmlWriter.Create(serializeFilePath, new XmlWriterSettings() { Async = true }))
                 {
                     Atom10ItemFormatter atomformatter = new Atom10ItemFormatter(feedObjct);
-                    await atomformatter.WriteToAsync(writer);
+                    atomformatter.WriteTo(writer);
                     writer.Close();
                 }
+
                 // compare file filePath and serializeFilePath
                 XmlDiff diff = new XmlDiff();
                 Assert.True(diff.Compare(filePath, serializeFilePath));
@@ -332,7 +332,6 @@ namespace System.ServiceModel.Syndication.Tests
         }
 
         [Fact]
-        [ActiveIssue(24572)]
         public static void AtomEntryPositiveTest_write()
         {
             string filePath = @"AtomEntryTest.xml";
@@ -347,8 +346,7 @@ namespace System.ServiceModel.Syndication.Tests
                 using (XmlWriter writer = XmlWriter.Create(serializeFilePath, new XmlWriterSettings()))
                 {
                     Atom10ItemFormatter f = new Atom10ItemFormatter(item);
-                    Task task = f.WriteToAsync(writer);
-                    Task.WhenAll(task);
+                    f.WriteTo(writer);
                     writer.Close();
                 }
                 
@@ -362,8 +360,7 @@ namespace System.ServiceModel.Syndication.Tests
         }
 
         [Fact]
-        [ActiveIssue(24604)]
-        public static async Task AtomEntryPositiveTest_writeAsync()
+        public static void AtomEntryPositiveTest_Write()
         {
             string filePath = @"AtomEntryTest.xml";
             string serializeFilePath = Path.GetTempFileName();
@@ -377,7 +374,7 @@ namespace System.ServiceModel.Syndication.Tests
                 using (XmlWriter writer = XmlWriter.Create(serializeFilePath, new XmlWriterSettings() { Async = true }))
                 {
                     Atom10ItemFormatter f = new Atom10ItemFormatter(item);
-                    await f.WriteToAsync(writer);
+                    f.WriteTo(writer);
                     writer.Close();
                 }
 
@@ -391,7 +388,7 @@ namespace System.ServiceModel.Syndication.Tests
         }
 
         [Fact]
-        public static async Task AtomFeedPositiveTestAsync()
+        public static void AtomFeedPositiveTest()
         {
             string dataFile = @"atom_feeds.dat";
             List<string> fileList = GetTestFilesForFeedTest(dataFile);
@@ -402,18 +399,16 @@ namespace System.ServiceModel.Syndication.Tests
                 try
                 {
                     SyndicationFeed feedObjct;
-                    CancellationToken ct = new CancellationToken();
-
                     using (XmlReader reader = XmlReader.Create(file, new XmlReaderSettings() { Async = true }))
                     {
-                        feedObjct = await SyndicationFeed.LoadAsync(reader, ct);
+                        feedObjct = SyndicationFeed.Load(reader);
                         reader.Close();
                     }
 
                     using (XmlWriter writer = XmlWriter.Create(serializeFilePath, new XmlWriterSettings() { Async = true }))
                     {
                         Atom10FeedFormatter f = new Atom10FeedFormatter(feedObjct);
-                        await f.WriteToAsync(writer, ct);
+                        f.WriteTo(writer);
                         writer.Close();
                     }
 
@@ -425,6 +420,7 @@ namespace System.ServiceModel.Syndication.Tests
                         },
                         AllowableDifferences = GetAtomFeedPositiveTestAllowableDifferences()
                     };
+
                     Assert.True(ch.Compare(file, serializeFilePath), $"Failed File Name:{file}");
                 }
                 catch(Exception e)
